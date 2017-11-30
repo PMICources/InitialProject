@@ -4,6 +4,7 @@
 #include <queue>
 #include <map>
 #include <mutex>
+#include <string>
 
 class MessagesQueue;
 
