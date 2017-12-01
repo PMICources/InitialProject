@@ -38,10 +38,9 @@ before_install:
     - pip install --user cpp-coveralls
 
 script:
-  - ./test/runTests --enable-gcov
   - mkdir build
   - cd build
-  - cmake ..
+  - cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
   - make -j8
   - ./test/runTests
 
