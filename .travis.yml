@@ -41,7 +41,7 @@ script:
   - mkdir build
   - cd build
   - cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
-  - make -j8
+  - make -DCOVERALLS=ON -j8
   - ./test/runTests
 
 after_success: 
