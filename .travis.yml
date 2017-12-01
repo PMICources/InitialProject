@@ -20,8 +20,7 @@ before_install:
 script:
   - mkdir build
   - cd build
-  - cmake ../InitialProject
-  
+  - cmake ..
   - make -j8
   - ./test/runTests
 
