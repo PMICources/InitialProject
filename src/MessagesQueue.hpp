@@ -4,6 +4,7 @@
 #include <queue>
 #include <map>
 #include <mutex>
+#include <string>
 
 class MessagesQueue;
 
@@ -20,8 +21,9 @@ uint64_t& totalCounter();
 void clearMessageQueue();
 
 class Message {
-public:
-    Message(const uint64_t id, const std::string &dest_, const std::string &message_);
+ public:
+    Message(const uint64_t id, const std::string &dest_,
+            const std::string &message_);
     Message(const std::string &dest_, const std::string &message_);
     Message(const Message&) = default;
     Message(Message&&) = default;
@@ -30,19 +32,19 @@ public:
     std::string message() const;
     uint64_t id() const;
 
-private:
+ private:
     std::string dest_;
     std::string message_;
     uint64_t id_;
 };
 
 class MessagesQueue {
-public:
+ public:
     void addMessage(const Message&);
     bool hasNext(const std::string& user) const;
     Message getNext(const std::string& user);
     void clear();
-private:
+ private:
     MessagesQueue();
     std::map<std::string, std::queue<Message>> messagesContainer_;
     mutable std::mutex lock_;
