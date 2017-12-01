@@ -42,6 +42,7 @@ script:
   - cmake ..
   - make -j8
   - ./test/runTests
+  - coverage run --source=./test/runTests
 
 after_success: coveralls
 
