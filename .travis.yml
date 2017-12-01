@@ -43,5 +43,5 @@ script:
   - make -j8
   - ./test/runTests
 
-
+after_success: coveralls
 
