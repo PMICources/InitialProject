@@ -35,8 +35,10 @@ matrix:
 
 before_install:
     - eval "${MATRIX_EVAL}"
+    - pip install --user cpp-coveralls
 
 script:
+  - ./configure --enable-gcov
   - mkdir build
   - cd build
   - cmake ..
