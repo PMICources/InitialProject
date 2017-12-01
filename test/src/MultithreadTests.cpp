@@ -56,14 +56,16 @@ TEST(TEST_MULTITHREAD, TEST_MULTITHREAD_ADD) {
 
     std::vector<std::future<void>> pool;
 
-    for (int i = 0; i < 2; ++i) {
+    for (int i = 0; i < 3; ++i) {
         pool.push_back(std::async(std::launch::async, [&]{
-            for (int j = 0; j < 100; ++j) {
+            long count = 0;
+            for (int j = 0; j < 1000; ++j) {
                 std::stringstream ss;
                 ss << "user";
                 sendRequest(ss.str(), "message");
-                addedCount++;
+                count ++;
             }
+            addedCount += count;
         }));
     }
 

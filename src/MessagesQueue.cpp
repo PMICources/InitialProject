@@ -32,14 +32,17 @@ uint64_t Message::id() const {
 
 
 void MessagesQueue::addMessage(const Message & m) {
+    std::lock_guard<std::mutex> guard(lock_);
     messagesContainer_[m.dest()].push(m);
 }
 
 bool MessagesQueue::hasNext(const std::string &user) const {
+    std::lock_guard<std::mutex> guard(lock_);
     return messagesContainer_.count(user) && !messagesContainer_.at(user).empty();
 }
 
 Message MessagesQueue::getNext(const std::string &user) {
+    std::lock_guard<std::mutex> guard(lock_);
     Message res(messagesContainer_[user].front());
     messagesContainer_[user].pop();
     return res;
@@ -48,6 +51,7 @@ Message MessagesQueue::getNext(const std::string &user) {
 MessagesQueue::MessagesQueue() { }
 
 void MessagesQueue::clear() {
+    std::lock_guard<std::mutex> guard(lock_);
     messagesContainer_.clear();
 }
 

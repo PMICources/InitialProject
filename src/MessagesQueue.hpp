@@ -45,7 +45,7 @@ public:
 private:
     MessagesQueue();
     std::map<std::string, std::queue<Message>> messagesContainer_;
-
+    mutable std::mutex lock_;
     friend MessagesQueue& singleton<MessagesQueue>();
 };
 
