@@ -13,6 +13,25 @@ matrix:
       env:
         - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
 
+    - os: osx
+      osx_image: xcode8
+      compiler: clang
+
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-trusty-5.0
+          packages:
+            - clang-5.0
+      env:
+        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
+        - LIBCXX_BUILD=1
+        - EXTRA_FLAGS="-stdlib=libc++"
+
+
+
 
 before_install:
     - eval "${MATRIX_EVAL}"
