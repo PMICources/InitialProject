@@ -38,7 +38,7 @@ before_install:
     - pip install --user cpp-coveralls
 
 script:
-  - ./configure --enable-gcov
+  - ./test/runTests --enable-gcov
   - mkdir build
   - cd build
   - cmake ..
