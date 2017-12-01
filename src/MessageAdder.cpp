@@ -31,16 +31,17 @@ void MessageAdder::handleRequest(Poco::Net::HTTPServerRequest &request, Poco::Ne
     logger.debug("Got add message request with body " + body);
 
     auto b = json::parse(body.begin(), body.end());
-    uint64_t& counter = totalCounter();
 
     auto& queue = singleton<MessagesQueue>();
-    queue.addMessage(Message(counter, b["dest"], b["message"]));
 
+    auto m = Message(b["dest"], b["message"]);
 
-    json resp = generateResponceText(counter++,
+    queue.addMessage(m);
+
+    json resp = generateResponceText(m.id(),
                                      b["dest"].get<std::string>() +
                                              std::string(" got message with id ") +
-                                             std::to_string(counter));
+                                             std::to_string(m.id()));
 
     response.setStatus(Poco::Net::HTTPResponse::HTTP_OK);
     response.setContentType("application/json");

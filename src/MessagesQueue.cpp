@@ -8,10 +8,6 @@ uint64_t nextId() {
     return id++;
 }
 
-uint64_t& totalCounter() {
-    return id;
-}
-
 Message::Message(const uint64_t id, const std::string &dest_, const std::string &message_) :
         dest_(dest_), message_(message_), id_(id) {}
 

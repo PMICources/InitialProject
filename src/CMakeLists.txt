@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.2.0)
 project(HighLoadCup)
 
-SET(CMAKE_CXX_FLAGS "-O2")
+SET(CMAKE_CXX_FLAGS "-O2  -Wall -Werror")
 SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g")
 SET(CMAKE_CXX_FLAGS_RELEASE ${CMAKE_CXX_FLAGS})
 
