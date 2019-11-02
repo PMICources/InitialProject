@@ -4,6 +4,7 @@
 #include <Poco/Util/ServerApplication.h>
 
 #include <iostream>
+#include <string>
 
 class MainListener final : public Poco::Util::ServerApplication {
     virtual int main(const std::vector<std::string>& args) override;
