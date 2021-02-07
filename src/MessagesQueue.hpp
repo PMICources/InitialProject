@@ -53,4 +53,4 @@ class MessagesQueue {
 
 
 
-#endif //HIGHLOADCUP_MESSAGESQUEUE_H
+#endif // HIGHLOADCUP_MESSAGESQUEUE_H
